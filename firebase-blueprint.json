@@ -1,0 +1,62 @@
+{
+  "entities": {
+    "users": {
+      "title": "Users",
+      "description": "Player profile records containing coins, verified status, and rank info",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "username": { "type": "string" },
+        "usernameLower": { "type": "string" },
+        "coins": { "type": "number" },
+        "isKing": { "type": "boolean" },
+        "isVerified": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "username", "coins"]
+    },
+    "donations": {
+      "title": "Donations",
+      "description": "Coin donation messages sent from King Hero to players",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fromUsername": { "type": "string" },
+        "toUsername": { "type": "string" },
+        "toUid": { "type": "string" },
+        "amount": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "accepted", "rejected"] },
+        "note": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["fromUsername", "toUsername", "amount", "status"]
+    },
+    "system_settings": {
+      "title": "System Settings",
+      "description": "Global server configuration including global coin collection toggle",
+      "type": "object",
+      "properties": {
+        "globalCollectingDisabled": { "type": "boolean" },
+        "updatedAt": { "type": "string" },
+        "updatedBy": { "type": "string" }
+      }
+    },
+    "game_events": {
+      "title": "Game Events",
+      "description": "Special events created by King Hero with custom coin rewards per tap and time limit",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "type": { "type": "string" },
+        "coinsPerTap": { "type": "number" },
+        "startsAt": { "type": "string" },
+        "endsAt": { "type": "string" },
+        "isActive": { "type": "boolean" },
+        "createdBy": { "type": "string" }
+      },
+      "required": ["title", "coinsPerTap", "startsAt", "endsAt", "isActive"]
+    }
+  }
+}
